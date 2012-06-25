@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-
-  mount Boss::Engine => "/boss"
+  mount Boss::Engine => "/"
 end
