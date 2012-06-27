@@ -9,15 +9,18 @@ Gem::Specification.new do |s|
   s.version     = Boss::VERSION
   s.authors     = ["Group Buddies"]
   s.email       = ["zamith@groupbuddies.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "http://zamith.github.com/Boss"
   s.summary     = "GB CMS"
   s.description = "A CMS that sits on top of Citygate"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.2.6"
-  # s.add_dependency "jquery-rails"
+  s.add_dependency "jquery-rails"
+  s.add_dependency "coffee-rails"
+  s.add_dependency "citygate"
+  s.add_dependency "devise"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails",      ">= 2.8.1"

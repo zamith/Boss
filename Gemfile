@@ -7,6 +7,7 @@ gemspec
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
+gem "coffee-rails"
 gem "citygate", :path => "../citygate"
 gem "devise", :git => "git://github.com/plataformatec/devise.git"
 
