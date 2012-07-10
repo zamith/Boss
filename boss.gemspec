@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails"
   s.add_dependency "coffee-rails"
   s.add_dependency "citygate"
-  s.add_dependency "devise"
+  s.add_dependency "paperclip"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails",      ">= 2.8.1"

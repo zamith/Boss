@@ -1,3 +1,5 @@
+require "paperclip"
+
 module Boss
   class Engine < ::Rails::Engine
     isolate_namespace Boss

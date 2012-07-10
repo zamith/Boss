@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624234844) do
+ActiveRecord::Schema.define(:version => 20120709230309) do
 
   create_table "boss_posts", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20120624234844) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "boss_resources", :force => true do |t|
+    t.string   "resource_file_name"
+    t.string   "resource_content_type"
+    t.integer  "resource_file_size"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "boss_resources", ["resource_content_type"], :name => "index_boss_resources_on_resource_content_type"
 
   create_table "citygate_authorizations", :force => true do |t|
     t.string   "provider"
@@ -53,7 +63,8 @@ ActiveRecord::Schema.define(:version => 20120624234844) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

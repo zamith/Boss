@@ -23,6 +23,7 @@ spec/dummy/db/development.sqlite3
 spec/dummy/db/test.sqlite3
 .yardoc
 config/accounts.yml
+spec/dummy/public/system/*
 
 # RVM ignores
 .rvmrc
