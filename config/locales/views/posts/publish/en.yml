@@ -1,0 +1,5 @@
+en:
+  posts:
+    flash:
+      published_post: "%{title} was published"
+      failed_to_published_post: "Could not publish the post"

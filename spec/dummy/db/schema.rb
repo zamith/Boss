@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120709230309) do
+ActiveRecord::Schema.define(:version => 20120712230952) do
 
   create_table "boss_posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
+    t.string   "title",                        :null => false
+    t.text     "body",                         :null => false
     t.datetime "start_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "draft",      :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "boss_resources", :force => true do |t|

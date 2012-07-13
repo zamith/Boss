@@ -1,0 +1,5 @@
+en:
+  posts:
+    flash:
+      saved_draft: "Saved Draft"
+      failed_to_save: "Failed to save the draft"

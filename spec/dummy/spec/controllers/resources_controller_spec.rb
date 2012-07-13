@@ -15,7 +15,7 @@ describe Boss::ResourcesController do
     
     it "should create a file when the type is file and the file is valid" do
       resource = double(:content_type => "application/pdf", :url => "/some/url")
-      file = double(:resource => resource)
+      file = double(:resource => resource, :resource_file_name => "A file")
       Boss::Resource.should_receive(:create_file).and_return(file)
       
       post :create, :type => "file"
@@ -37,4 +37,5 @@ describe Boss::ResourcesController do
     end
     
   end
+
 end
