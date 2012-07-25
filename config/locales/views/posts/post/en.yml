@@ -1,0 +1,9 @@
+en:
+  posts:
+    member:
+      status:
+        draft: "Draft"
+        publish: "Published"
+      publish_link: "Publish"
+      edit_link: "Edit"
+          

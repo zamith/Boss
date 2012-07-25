@@ -1,0 +1,7 @@
+first:
+  title: My very first post
+  body: Hello Mr. World!
+  draft: true
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+  

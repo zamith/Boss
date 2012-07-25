@@ -6,6 +6,11 @@ Boss::Engine.routes.draw do
       post 'save', :constraints => { :format => 'json' }, :defaults => { :format => 'json' }
       post 'publish'
     end
+    
+    member do
+      post 'publish'
+      get 'content'
+    end
   end
 
   namespace :resources, :module => nil, :as => nil do
@@ -17,6 +22,10 @@ Boss::Engine.routes.draw do
       :as => "create_image",
       :via => :post,
       :constraints => { :type => /(image|file)/}
+  end
+  
+  namespace :admin do
+    resources :posts, :only => [:index]
   end
 
 end

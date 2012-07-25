@@ -18,6 +18,20 @@ describe "routing" do
     it "should have a route to publish a post" do
       post("posts/publish").should route_to "boss/posts#publish"
     end
+    
+    it "should have a route to publish a post with id" do
+      post("posts/1/publish").should route_to("boss/posts#publish", id: "1")
+    end
+    
+    it "should have a route to get the content of a post" do
+      get("posts/1/content").should route_to("boss/posts#content", id: "1")
+    end
+    
+    context "admin" do
+      it "should have a list to admin posts" do
+        get("admin/posts").should route_to "boss/admin/posts#index"
+      end
+    end
   end
 
   context "resources" do

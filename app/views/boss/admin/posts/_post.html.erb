@@ -1,0 +1,8 @@
+<li class="post">
+  <span id="post-title"><%= post.title %></span>
+  <span class="post-status"><%= (post.draft) ? t("posts.member.status.draft") : t("posts.member.status.publish") %></span>
+  <div class="buttons">
+    <%= link_to t("posts.member.publish_link"), publish_post_path(post), method: :post if post.draft %>
+    <%= link_to t("posts.member.edit_link"), edit_post_path(post) %>
+  </div>
+</li>
