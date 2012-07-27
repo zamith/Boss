@@ -1,4 +1,5 @@
 class Boss::ResourcesController < ApplicationController
+  load_and_authorize_resource :class => "Boss::Resource"
   
   def create
     if params[:type] == 'image'

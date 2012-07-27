@@ -1,4 +1,5 @@
 class Boss::PostsController < ApplicationController
+  load_and_authorize_resource :class => "Boss::Post"
 
   def new
     @post = Boss::Post.new

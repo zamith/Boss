@@ -1,3 +1,5 @@
+<%= "I can read this" if can?(:read, Boss::Post) %>
+
 <section id="posts">
   <%= render :partial => "post", :collection => @posts %>
 </section>

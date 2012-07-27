@@ -1,4 +1,5 @@
 require "paperclip"
+require "cancan"
 
 module Boss
   class Engine < ::Rails::Engine

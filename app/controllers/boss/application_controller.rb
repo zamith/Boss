@@ -1,4 +1,2 @@
-module Boss
-  class ApplicationController < ActionController::Base
-  end
+class Boss::ApplicationController < ::ApplicationController
 end
