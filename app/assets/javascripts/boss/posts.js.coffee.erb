@@ -5,7 +5,7 @@ $ ->
     edit: ->
       if redactor.container.attr('class') and redactor.container.attr('class').indexOf("edit") != -1
         $.get window.location.href.replace("edit","content"), (data) ->
-          redactor.container.setCode(data) 
+          redactor.container.setCode(data)
 
     publish: ->
       $("#publish").on 'click', ->
@@ -34,4 +34,31 @@ $ ->
       redactor.save()
       redactor.publish()
 
+  posts =
+    starts_at: <%= POSTS["no_of_users_in_index"] %>
+
+    load_more: ->
+      $.get "/posts/load?starts_at=#{posts.starts_at}", (data) ->
+        $("div#loading-posts").hide()
+        if data.has_more
+          $("#posts").append(data.html)
+          posts.starts_at = data.new_start
+        else
+          posts.starts_at = 0
+          $("div#no-more-posts").show()
+          $(window).off("scroll")
+      .error (data) ->
+        $("div#loading-posts").hide()
+
+    check_scroll: ->
+      $(window).scroll ->
+        if $(window).scrollTop() == $(document).height() - $(window).height()
+          posts.load_more()
+          $("div#loading-posts").show()
+
+    init: ->
+      posts.check_scroll()
+
+  # Initializations
   redactor.init()
+  posts.init()

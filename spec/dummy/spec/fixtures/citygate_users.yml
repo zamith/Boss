@@ -1,0 +1,16 @@
+admin:
+  confirmed_at: <%= Time.now %>
+  first_name: "Zamith"
+  email: "zamith@groupbuddies.com"
+  role_id: "2"
+  
+member:
+  confirmed_at: <%= Time.now %>
+  first_name: "Zamith"
+  email: "zamith1@groupbuddies.com"
+  role_id: "1"
+    
+guest:
+  confirmed_at: <%= Time.now %>
+  email: "zamith2@groupbuddies.com"
+  first_name: "Zamith"

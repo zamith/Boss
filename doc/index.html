@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.2.1
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>Boss</h1>
+<p>
+Boss is a rails engine that sits on top of <a
+href="https://github.com/zamith/citygate">Citygate</a> and adds CMS
+functionalities (posts, resources, banners and pages)
+</p>
+<h2>Instalation</h2>
+<p>
+Add the gem to your Gemfile and link to your local repository
+</p>
+<pre class="code ruby"><code>
+  <span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>boss</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>relative/path/to/repo</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+<p>
+<b>Reminder:</b> In order to use boss you must first install and configure
+Citygate
+</p>
+<h2>Database Configuration</h2>
+<p>
+In order to get the database ready to run boss you will need to fetch the
+migrations
+</p>
+<pre class="code ruby"><code>
+  rake boss:install:migrations
+</code></pre>
+<p>
+and run them
+</p>
+<pre class="code ruby"><code>
+  <span class='id identifier rubyid_rake'>rake</span> <span class='label'>db:</span><span class='id identifier rubyid_migrate'>migrate</span>
+</code></pre>
+<p>
+then drop this line at your <tt>db/seeds.rb</tt> file in order to be able
+to populate the db with the needed records
+</p>
+<pre class="code ruby"><code>
+  <span class='const'>Boss</span><span class='op'>::</span><span class='const'>Engine</span><span class='period'>.</span><span class='id identifier rubyid_load_seed'>load_seed</span>
+</code></pre>
+<p>
+and finally run the seeds command to actually populate the db
+</p>
+<pre class="code ruby"><code>
+  <span class='id identifier rubyid_rake'>rake</span> <span class='label'>db:</span><span class='id identifier rubyid_seed'>seed</span>
+</code></pre>
+<h2>Routes Configuration</h2>
+<p>
+To get all the citygate routes working you just need to mount them by
+adding the following line to your <tt>config/routes.rb</tt> file
+</p>
+<pre class="code ruby"><code>
+  <span class='id identifier rubyid_mount'>mount</span> <span class='const'>Boss</span><span class='op'>::</span><span class='const'>Engine</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/boss</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+<h2>Environment Configuration</h2>
+<p>
+Boss is gives you a lot of control in what and how you want to display your
+data, to change those options check the YAML files in the <tt>config</tt>
+directory.
+</p>
+<p>
+Currently these are the files you can edit:
+</p>
+<h3>posts_config</h3>
+<table>
+<tr><td valign="top">no_of_users_in_index</td><td><p>
+The number of users to be shown in the index page after load. The rest of
+them will be loaded in a need basis as you scroll down
+</p>
+</td></tr>
+</table>
+<h3>resources_styles</h3>
+<p>
+It defines the multiple sizes resources may take.
+</p>
+<p>
+<b>CAUTION</b> This file should be configured before the app goes into
+production, because to change it you will have to delete all your resources
+data.
+</p>
+<hr style="height: 1px"></hr><p>
+<b>Note:</b> Do not forget to check the routes made available to you by
+Boss with <tt>rake routes</tt>
+</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Tue Aug  7 14:43:06 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

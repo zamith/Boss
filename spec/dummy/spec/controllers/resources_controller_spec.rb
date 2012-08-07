@@ -1,31 +1,41 @@
 require 'spec_helper'
 
 describe Boss::ResourcesController do
-  
+  set_fixture_class :citygate_users => 'Citygate::User'
+  fixtures :citygate_users
+
+  let(:user) { citygate_users(:admin) }
+  let(:member) { citygate_users(:member) }
+  let(:guest) { citygate_users(:guest) }
+
+  before (:each) do
+    sign_in user
+  end
+
   context "create" do
-    
+
     it "should create an image when the type is image and the file is valid" do
       resource = double(:content_type => "image/png", :url => "/some/url")
       file = double(:resource => resource)
       Boss::Resource.should_receive(:create_image).and_return(file)
-      
+
       post :create, :type => "image"
       assigns(:resource).resource.content_type.should == "image/png"
     end
-    
+
     it "should create a file when the type is file and the file is valid" do
       resource = double(:content_type => "application/pdf", :url => "/some/url")
       file = double(:resource => resource, :resource_file_name => "A file")
       Boss::Resource.should_receive(:create_file).and_return(file)
-      
+
       post :create, :type => "file"
       assigns(:resource).resource.content_type.should == "application/pdf"
     end
-    
+
   end
-  
+
   context "all_images" do
-    
+
     it "should return all the images in the database" do
       resource = double(:content_type => "image/png", :url => "/some/url")
       image = mock_model(Boss::Resource)
@@ -35,7 +45,7 @@ describe Boss::ResourcesController do
       get :all_images
       assigns(:images).should == [image]
     end
-    
+
   end
 
 end

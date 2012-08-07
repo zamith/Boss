@@ -1,7 +1,14 @@
 first:
-  title: My very first post
   body: Hello Mr. World!
-  draft: true
   created_at: <%= Time.now %>
+  draft: true
+  title: My very first post
+  updated_at: <%= Time.now %>
+
+second:
+  body: Hello Mr. World!
+  created_at: <%= Time.now %>
+  draft: true
+  title: My very second post
   updated_at: <%= Time.now %>
   

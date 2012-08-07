@@ -1,4 +1,4 @@
-class Boss::PostsController < ApplicationController
+class Boss::PostsController < Boss::ApplicationController
   load_and_authorize_resource :class => "Boss::Post"
 
   def new
@@ -12,7 +12,7 @@ class Boss::PostsController < ApplicationController
   end
 
   def index
-    @posts = Boss::Post.all
+    @posts = Boss::Post.posts_for_index
   end
 
   def save
@@ -65,6 +65,16 @@ class Boss::PostsController < ApplicationController
     
     respond_to do |format|
       format.json { render json: @content.to_json }
+    end
+  end
+  
+  def load
+    @posts = Boss::Post.posts_for_index({ starts_at: params[:starts_at] })
+    
+    html_str = render_to_string( partial: "boss/posts/post", collection: @posts)
+        
+    respond_to do |format|
+      format.json { render json: { html: html_str, has_more: !@posts.empty?, new_start: (@posts.last) ? @posts.last.id : nil } }
     end
   end
   

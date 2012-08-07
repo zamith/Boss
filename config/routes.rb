@@ -5,6 +5,7 @@ Boss::Engine.routes.draw do
     collection do
       post 'save', :constraints => { :format => 'json' }, :defaults => { :format => 'json' }
       post 'publish'
+      get  'load'
     end
     
     member do

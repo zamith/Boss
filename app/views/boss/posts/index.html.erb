@@ -1,5 +1,6 @@
-<%= "I can read this" if can?(:read, Boss::Post) %>
-
 <section id="posts">
   <%= render :partial => "post", :collection => @posts %>
+
+  <div id="loading-posts"><%= image_tag "boss/ajax-loader.gif" %></div>
+  <div id="no-more-posts"><%= t("posts.index.no_more") %></div>
 </section>

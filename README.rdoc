@@ -1,3 +1,55 @@
 = Boss
 
-This project rocks and uses MIT-LICENSE.
+Boss is a rails engine that sits on top of Citygate[https://github.com/zamith/citygate] and adds CMS functionalities (posts, resources, banners and pages)
+
+== Instalation
+
+Add the gem to your Gemfile and link to your local repository
+
+  gem "boss", :path => "relative/path/to/repo"
+
+*Reminder:* In order to use boss you must first install and configure Citygate
+
+== Database Configuration
+
+In order to get the database ready to run boss you will need to fetch the migrations
+
+  rake boss:install:migrations
+
+and run them
+
+  rake db:migrate
+
+then drop this line at your +db/seeds.rb+ file in order to be able to populate the db with the needed records
+
+  Boss::Engine.load_seed
+
+and finally run the seeds command to actually populate the db
+
+  rake db:seed
+
+== Routes Configuration
+
+To get all the citygate routes working you just need to mount them by adding the following line to your +config/routes.rb+ file
+
+  mount Boss::Engine => "/boss"
+
+== Environment Configuration
+
+Boss is gives you a lot of control in what and how you want to display your data, to change those options check the YAML files in the +config+ directory.
+
+Currently these are the files you can edit:
+
+=== posts_config
+
+no_of_users_in_index:: The number of users to be shown in the index page after load. The rest of them will be loaded in a need basis as you scroll down
+
+=== resources_styles
+
+It defines the multiple sizes resources may take.
+
+*CAUTION* This file should be configured before the app goes into production, because to change it you will have to delete all your resources data.
+
+---
+
+*Note:* Do not forget to check the routes made available to you by Boss with <tt>rake routes</tt>

@@ -1,2 +1,2 @@
-class Boss::ApplicationController < ::ApplicationController
+class Boss::ApplicationController < Citygate::ApplicationController
 end

@@ -1,4 +1,4 @@
-class Boss::ResourcesController < ApplicationController
+class Boss::ResourcesController < Boss::ApplicationController
   load_and_authorize_resource :class => "Boss::Resource"
   
   def create
