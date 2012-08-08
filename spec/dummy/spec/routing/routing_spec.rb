@@ -27,6 +27,10 @@ describe "routing" do
       get("posts/1/content").should route_to("boss/posts#content", id: "1")
     end
     
+    it "should have a route to load the posts" do
+      get("posts/load").should route_to("boss/posts#load")
+    end
+    
     context "admin" do
       it "should have a list to admin posts" do
         get("admin/posts").should route_to "boss/admin/posts#index"

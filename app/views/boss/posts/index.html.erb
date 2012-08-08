@@ -1,6 +1,11 @@
-<section id="posts">
-  <%= render :partial => "post", :collection => @posts %>
+<section id="post-list">
+  <section id="posts">
+    <%= render :partial => "post", :collection => @posts %>
+  </section>
 
-  <div id="loading-posts"><%= image_tag "boss/ajax-loader.gif" %></div>
-  <div id="no-more-posts"><%= t("posts.index.no_more") %></div>
+  <section id="controls">
+    <%= link_to t("posts.index.show_more"), "#", :id => "show-more" %>
+    <div id="loading-posts"><%= image_tag "boss/ajax-loader.gif" %></div>
+    <div id="no-more-posts"><%= t("posts.index.no_more") %></div>
+  </section>
 </section>
