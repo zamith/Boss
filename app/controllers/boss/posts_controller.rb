@@ -78,4 +78,8 @@ class Boss::PostsController < Boss::ApplicationController
     end
   end
   
+  def show
+    @post = Boss::Post.find params[:id]
+  end
+  
 end

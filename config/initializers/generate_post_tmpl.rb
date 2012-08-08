@@ -1,6 +1,7 @@
 pg = PostGenerator.new do
-  [ :post,
-    :meta ]
+  [ :meta,
+    :meta,
+    :post ]
 end
 
 pg.generate

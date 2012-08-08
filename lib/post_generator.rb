@@ -1,7 +1,7 @@
 class PostGenerator
 
   def initialize(*args)
-    @html = ""
+    @html = "<%# This file was generated, please do not edit unless you are sure of what you're doing %>\n\n<% post ||= @post %>\n\n"
     yield.each do |elem|
       send elem
     end

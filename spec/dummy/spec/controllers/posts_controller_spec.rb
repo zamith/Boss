@@ -151,12 +151,20 @@ describe Boss::PostsController do
       assigns(:content).should == boss_posts(:first).body
     end
   end
-  
+
   context "load" do
     it "should get posts to show in the index with a given offset" do
       get :load, starts_at: 1
-      
+
       assigns(:posts).first.should == boss_posts(:second)
+    end
+  end
+
+  context "show" do
+    it "should get the correct post and show it" do
+      get :show, id: boss_posts(:first).id
+
+      assigns(:post).should == boss_posts(:first)
     end
   end
 
