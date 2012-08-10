@@ -18,6 +18,7 @@ spec/dummy/tmp/*
 *.gem
 spec/dummy/.jhw-cache/*
 spec/dummy/db/*.sqlite3
+spec/dummy/db/schema.rb
 pkg/*
 spec/dummy/db/development.sqlite3
 spec/dummy/db/test.sqlite3
