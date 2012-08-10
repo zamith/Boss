@@ -1,4 +1,5 @@
 <article class="post">
-  <span class="post-id"><%= post.id %></span>
-  <span class="post-title"><%= post.title %></span>
+  <%= render :partial => "header" %>
+  <p class="body"><%= post.body %></p>
+  <%= render :partial => "footer" %>
 </article>
