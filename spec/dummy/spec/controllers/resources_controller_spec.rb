@@ -5,8 +5,6 @@ describe Boss::ResourcesController do
   fixtures :citygate_users
 
   let(:user) { citygate_users(:admin) }
-  let(:member) { citygate_users(:member) }
-  let(:guest) { citygate_users(:guest) }
 
   before (:each) do
     sign_in user

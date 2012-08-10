@@ -42,7 +42,7 @@ $ ->
       $(window).off("scroll")
 
       $.get "/posts/load?starts_at=#{posts.starts_at}", (data) ->
-        $("div#loading-posts").hide()
+        $("#loading-posts").hide()
         posts.check_show_or_not()
         if data.has_more
           $("#posts").append(data.html)
@@ -51,15 +51,15 @@ $ ->
         else
           posts.starts_at = 0
           $("#show-more").remove()
-          $("div#no-more-posts").show()
+          $("#no-more-posts").show()
       .error (data) ->
-        $("div#loading-posts").hide()
+        $("#loading-posts").hide()
         # TODO: Caixinha a avisar que não conseguiu ir buscar mais posts
 
     check_scroll: ->
       if $(window).scrollTop() == $(document).height() - $(window).height()
         posts.load_more()
-        $("div#loading-posts").show()
+        $("#loading-posts").show()
 
     scroll_bind: ->
       $(window).on "scroll", posts.check_scroll

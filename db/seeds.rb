@@ -1,4 +1,4 @@
-puts 'Creating permission for boss...'
+puts 'Creating permissions for boss...'
 permissions = [
   # Guest
   #{:action => "index", :subject_class => "home", :role_id => nil },

@@ -13,11 +13,11 @@ describe Boss::Post do
 
   context 'posts for index' do
     it "should only return the first posts to show in the index page" do
-      Boss::Post.posts_for_index.size.should be <= 15
+      Boss::Post.posts_for_index.size.should be <= POSTS["index_limit"].to_i
     end
 
     it "should return the number of posts on demand" do
-      Boss::Post.posts_for_index({ no_of_users_in_index: 1 }).size.should be <= 1
+      Boss::Post.posts_for_index({ index_limit: 1 }).size.should be <= 1
     end
     
     it "should get posts with an offset" do

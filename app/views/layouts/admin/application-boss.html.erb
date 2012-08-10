@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boss Admin</title>
+  <%= stylesheet_link_tag    "boss", :media => "all" %>
+  <%= javascript_include_tag "boss" %>
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+</head>
+<body>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

@@ -27,6 +27,7 @@ Boss::Engine.routes.draw do
   
   namespace :admin do
     resources :posts, :only => [:index]
+    resources :resources
   end
 
 end

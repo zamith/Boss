@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require ./redactor/redactor.min
+//= require ./jQueryFileUpload/jquery.ui.widget.js
+//= require ./jQueryFileUpload/tmpl.min.js
+//= require ./jQueryFileUpload/load-image.min.js
+//= require ./jQueryFileUpload/jquery.fileupload.js
+//= require_tree ./jQueryFileUpload
 //= require_tree ./boss

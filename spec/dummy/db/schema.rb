@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120727151629) do
+ActiveRecord::Schema.define(:version => 20120810095503) do
 
   create_table "boss_posts", :force => true do |t|
     t.string   "title",                        :null => false
@@ -28,9 +28,10 @@ ActiveRecord::Schema.define(:version => 20120727151629) do
     t.integer  "resource_file_size"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.string   "extension"
   end
 
-  add_index "boss_resources", ["resource_content_type"], :name => "index_boss_resources_on_resource_content_type"
+  add_index "boss_resources", ["extension"], :name => "index_boss_resources_on_extension"
 
   create_table "citygate_authorizations", :force => true do |t|
     t.string   "provider"

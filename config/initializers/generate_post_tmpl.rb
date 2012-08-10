@@ -1,4 +1,4 @@
-pg = PostGenerator.new do
+pg = Boss::PostGenerator.new do
   [ :meta,
     :meta,
     :post ]
