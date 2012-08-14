@@ -1,0 +1,13 @@
+$ ->
+  resource_upload =
+    init: ->
+      $("#fileupload").fileupload {
+        autoUpload: false,
+        dropZone: $("#filedrag"),
+      }
+
+  resource_upload.init()
+  $("#resources").better_pagination
+    starts_at: <%= RESOURCES["index_limit"] %>
+    load_path: "admin/resources/load"
+    debug: true

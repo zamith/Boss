@@ -1,0 +1,12 @@
+<div id="banners">
+  <div class="banners-container">
+    <% banners.each do |banner| %>
+      <%= "<a href='#{banner.link}'>" if banner.link %>
+      <img src="<%= banner.image.resource.url %>" alt="" />
+      <%= "</a>" if banner.link %>
+    <% end %>
+  </div>
+
+  <a href="#" class="prev"></a>
+  <a href="#" class="next"></a>
+</div>

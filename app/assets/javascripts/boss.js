@@ -18,4 +18,5 @@
 //= require ./jQueryFileUpload/load-image.min.js
 //= require ./jQueryFileUpload/jquery.fileupload.js
 //= require_tree ./jQueryFileUpload
+//= require ./slides/slides.min.jquery
 //= require_tree ./boss

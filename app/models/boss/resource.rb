@@ -14,7 +14,7 @@ module Boss
 
     # Prevents from applying styles when it is not an image
     before_post_process :skip?
-    
+
     before_save :add_extension
 
     class << self
@@ -33,17 +33,16 @@ module Boss
       def all_images
         where("extension in (?)", ["jpeg","jpg","gif","png"])
       end
-
     end
 
     protected
 
-     def add_extension
-       self.extension = self.resource_file_name.match(/.+?\.([^.]*$|$)/)[1]
-     end
+    def add_extension
+      self.extension = self.resource_file_name.match(/.+?\.([^.]*$|$)/)[1]
+    end
 
-      def skip?
-        @@allowed_image_formats.include?(resource_content_type)
-      end
+    def skip?
+      @@allowed_image_formats.include?(resource_content_type)
+    end
   end
 end

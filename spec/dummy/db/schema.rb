@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810170148) do
+ActiveRecord::Schema.define(:version => 20120814170416) do
+
+  create_table "boss_banners", :force => true do |t|
+    t.integer "boss_resource_id"
+    t.date    "finish_date"
+    t.string  "link"
+    t.date    "start_date"
+    t.string  "title"
+  end
 
   create_table "boss_posts", :force => true do |t|
     t.string   "title",                            :null => false

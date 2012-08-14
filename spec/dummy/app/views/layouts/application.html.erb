@@ -12,6 +12,8 @@
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
 
+<%= banner_viewer %>
+
 <%= yield %>
 
 </body>

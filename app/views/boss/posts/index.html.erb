@@ -4,8 +4,8 @@
   </section>
 
   <section id="controls">
-    <%= link_to t("posts.index.show_more"), "#", :id => "show-more" %>
+    <%= link_to t("pagination.show_more"), "#", :id => "show-more" %>
     <div id="loading-posts"><%= image_tag "boss/ajax-loader.gif" %></div>
-    <div id="no-more-posts"><%= t("posts.index.no_more") %></div>
+    <div id="no-more-posts"><%= t("pagination.no_more", elem_name: t("pagination.elem_name.posts")) %></div>
   </section>
 </section>

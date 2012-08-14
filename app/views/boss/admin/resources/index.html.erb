@@ -27,6 +27,18 @@
   <% end %>
 </div>
 
+<section id="resources-list">
+  <section id="resources">
+    <%= render partial: "boss/admin/resources/resource" ,collection: @resources %>
+  </section>
+
+  <section id="controls">
+    <%= link_to t("pagination.show_more"), "#", :id => "show-more" %>
+    <div id="loading-posts"><%= image_tag "boss/ajax-loader.gif" %></div>
+    <div id="no-more-posts"><%= t("pagination.no_more", elem_name: t("pagination.elem_name.resources")) %></div>
+  </section>
+</section>
+
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-download fade">

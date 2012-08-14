@@ -1,0 +1,8 @@
+en:
+  pagination:
+    no_more: "No more %{elem_name} to show"
+    show_more: "Show More"
+
+    elem_name:
+      resources: "resources"
+      posts: "posts"

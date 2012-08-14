@@ -34,52 +34,9 @@ $ ->
       redactor.save()
       redactor.publish()
 
-  posts =
-    starts_at: <%= POSTS["no_of_users_in_index"] %>
-
-    load_more: ->
-      # When loading remove the check scroll event to serialize loading
-      $(window).off("scroll")
-
-      $.get "/posts/load?starts_at=#{posts.starts_at}", (data) ->
-        $("#loading-posts").hide()
-        posts.check_show_or_not()
-        if data.has_more
-          $("#posts").append(data.html)
-          posts.starts_at = data.new_start
-          $(window).on "scroll", posts.check_scroll
-        else
-          posts.starts_at = 0
-          $("#show-more").remove()
-          $("#no-more-posts").show()
-      .error (data) ->
-        $("#loading-posts").hide()
-        # TODO: Caixinha a avisar que não conseguiu ir buscar mais posts
-
-    check_scroll: ->
-      if $(window).scrollTop() == $(document).height() - $(window).height()
-        posts.load_more()
-        $("#loading-posts").show()
-
-    scroll_bind: ->
-      $(window).on "scroll", posts.check_scroll
-
-    check_show_or_not: ->
-      if $(document).height() > $(window).height()
-        $("#show-more").remove()
-        return false
-      else
-        return true
-
-    show_more: ->
-      $("#show-more").on "click", ->
-        posts.load_more()
-        posts.check_show_or_not()
-
-    init: ->
-      posts.show_more() if posts.check_show_or_not()
-      posts.scroll_bind()
+  $("#posts").better_pagination
+    starts_at: <%= POSTS["index_limit"] %>
+    load_on_scroll: true
 
   # Initializations
   redactor.init()
-  posts.init()

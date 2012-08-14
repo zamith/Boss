@@ -5,8 +5,9 @@
 <section id="meta">Meta Stuff</section>
 <section id="meta">Meta Stuff</section>
 <article class="post">
-  <%= render :partial => "header" %>
-  <p class="body"><%= post.body %></p>
-  <%= render :partial => "footer" %>
+  <span class="debug id"><%= post.id %></span>
+  <%= render :partial => "header", locals: {post: post} %>
+  <p class="body"><%= post.body.html_safe %></p>
+  <%= render :partial => "footer", locals: {post: post} %>
 </article>
 

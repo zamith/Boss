@@ -46,6 +46,16 @@ describe "routing" do
     it "should have a route to list all images" do
       get("resources/images").should route_to "boss/resources#all_images"
     end
+
+    context "admnin" do
+      it "should have a route to load the posts" do
+        get("admin/resources/load").should route_to("boss/admin/resources#load")
+      end
+
+      it "should have a list to admin resources" do
+        get("admin/resources").should route_to "boss/admin/resources#index"
+      end
+    end
   end
 
 end
