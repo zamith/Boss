@@ -1,9 +1,9 @@
 <div id="banners">
   <div class="banners-container">
     <% banners.each do |banner| %>
-      <%= "<a href='#{banner.link}'>" if banner.link %>
-      <img src="<%= banner.image.resource.url %>" alt="" />
-      <%= "</a>" if banner.link %>
+      <%= "<a href='#{banner.link}'>".html_safe if banner.link %>
+      <img src="<%= banner.image.resource.url %>" alt="" >
+      <%= "</a>".html_safe if banner.link %>
     <% end %>
   </div>
 
