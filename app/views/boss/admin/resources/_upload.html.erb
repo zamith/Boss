@@ -1,0 +1,22 @@
+<%= form_for :resource,
+             :url => admin_resources_path,
+             :method => :post,
+             :html => { :class => 'create upload', :multipart => true } do |form| %>
+
+  <div class="fileupload-buttonbar">
+    <%= form.label :resource %>
+    <%= form.file_field :resource %>
+    
+    <%= form.submit %>
+    <%= check_box_tag :toggle, :class => "toggle" %>
+  </div>
+
+  <div id="filedrag">or drop files here</div>
+
+  <div class="fileupload-loading"></div>
+  <div class="fileupload-content">
+    <table class="table table-striped" role="presentation">
+      <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+    </table>
+  </div>
+<% end %>

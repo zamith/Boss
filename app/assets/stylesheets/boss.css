@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require_tree ./jQueryFileUpload
+ *= require_tree ./smoothness
  *= require_tree ./boss
  */

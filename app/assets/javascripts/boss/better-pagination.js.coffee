@@ -28,9 +28,6 @@ $.fn.extend
         $loading_elem.show()
 
     check_show_or_not = ->
-      console.log $(document).height()
-      console.log $(window).height()
-      console.log settings.load_on_scroll
       if $(document).height() > $(window).height() and settings.load_on_scroll == true
         $show_more_elem.remove()
         return false

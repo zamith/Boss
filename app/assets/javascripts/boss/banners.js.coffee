@@ -6,7 +6,9 @@ $ ->
       generatePagination: true
       hoverPause: true
       play: 5000
-      preload: true
+      preload: false
       pause: 2500
       prev: 'prev'
       next: 'next'
+
+  Utils.setDatepickerWithTime(false)

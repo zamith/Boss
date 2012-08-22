@@ -1,0 +1,9 @@
+en:
+  helpers:
+    label:
+      banner:
+        title: "Title:"
+        start_date: "Start Date:"
+        finish_date: "Finish Date:"
+        image:
+          resource: "Image:"

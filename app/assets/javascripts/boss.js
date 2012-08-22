@@ -19,4 +19,7 @@
 //= require ./jQueryFileUpload/jquery.fileupload.js
 //= require_tree ./jQueryFileUpload
 //= require ./slides/slides.min.jquery
+//= require ./yepnope.1.5.4-min.js
+//= require ./jquery-ui-1.8.23.custom.min
+//= require ./boss/utils
 //= require_tree ./boss

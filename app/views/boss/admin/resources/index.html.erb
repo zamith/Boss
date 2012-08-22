@@ -1,30 +1,5 @@
 <div id="fileupload">
-  <%= form_for :resource,
-               :url => admin_resources_path,
-               :method => :post,
-               :html => { :class => 'create upload', :multipart => true } do |form| %>
-
-    <div class="fileupload-buttonbar">
-      <%= form.label :resource %>
-      <%= form.file_field :resource %>
-      
-      <%= form.submit %>
-        <%#= form.commit_button t('gallery.form.add_button'),
-                               :button_html => { :class => 'button positive start' } %>
-        <%#= form.button_link   t('gallery.form.delete_button'), admin_albums_path,
-                               :button_html => { :class => 'button negative delete' } %>
-      <%= check_box_tag :toggle, :class => "toggle" %>
-    </div>
-
-    <div id="filedrag">or drop files here</div>
-
-    <div class="fileupload-loading"></div>
-    <div class="fileupload-content">
-      <table class="table table-striped" role="presentation">
-        <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
-      </table>
-    </div>
-  <% end %>
+  <%= render :partial => "upload" %>
 </div>
 
 <section id="resources-list">
