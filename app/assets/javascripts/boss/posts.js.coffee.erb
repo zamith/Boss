@@ -1,26 +1,26 @@
 $ ->
   redactor =
-    container: $('#redactor-content')
+    $container: $('#redactor-content')
 
     edit: ->
-      if redactor.container.attr('class') and redactor.container.attr('class').indexOf("edit") != -1
+      if redactor.$container.attr('class') and redactor.$container.attr('class').indexOf("edit") != -1
         $.get window.location.href.replace("edit","content"), (data) ->
-          redactor.container.setCode(data)
+          redactor.$container.setCode(data)
 
     publish: ->
       $("#publish").on 'click', ->
-        $(this).find("#data").attr('value', redactor.container.getCode())
+        $(this).find("#data").attr('value', redactor.$container.getCode())
         $(this).find("#title").attr('value', $("#post-title").attr("value"))
 
     save: ->
       $('#save').on 'click', (event) ->
-        $.post "/posts/save", { data: redactor.container.getCode(), title: $("#post-title").attr("value") }, (data) ->
+        $.post "/posts/save", { data: redactor.$container.getCode(), title: $("#post-title").attr("value") }, (data) ->
           window.location.href = data.redirect if data.redirect
         event.preventDefault()
 
     init: ->
-      redactor.container.redactor({
-        fixed: true,                               # toolbar goes to top as user scrolls
+      redactor.$container.redactor({
+        #fixed: true,                               # toolbar goes to top as user scrolls
         autoresize: true,                          # textarea resizes automatically as user types
         focus: true,                               # gets focus on load
         imageUpload: '/resources/image',           # upload images from pc

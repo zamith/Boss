@@ -5,11 +5,14 @@
 <button id="save"><%= t('posts.new.save') %></button>
 <%= form_tag publish_posts_path, id: "publish" do %>
   <%= hidden_field_tag :data, "" %>
+  <%= hidden_field_tag :title, "" %>
   <%= submit_tag t('posts.new.publish')  %>
 <% end %>
 
-<%= text_field_tag "post-title" %>
+<%= text_field_tag "post-title", @post.title %>
+
+<%= select_tag "categories", options_from_collection_for_select(@categories, :id, :name) %>
 
 <div style="width: 700px;">
-  <textarea id="redactor-content" name="content" style="height: 700px;"></textarea>
+  <textarea id="redactor-content" class="new" name="content" style="height: 700px;"></textarea>
 </div>

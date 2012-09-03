@@ -8,7 +8,11 @@ module Boss
     attr_accessor :banner
 
     # Gets the styles from default, if it is a banner (to be refactored)
-    has_attached_file :resource, :style => lambda { |attachment| attachment.banner ? STYLES['default'] : {}}
+    has_attached_file :resource, 
+      :style => lambda { |attachment| attachment.banner ? STYLES['default'] : {}},
+      :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+      :url => "/system/:attachment/:id/:style/:filename"
+
     validates_attachment :resource, :presence => true,
       :size => { :in => 0..5.megabytes }
 

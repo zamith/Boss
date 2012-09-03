@@ -2942,7 +2942,8 @@ var RLANG = {
 			{
 				var formId = 'redactorUploadForm' + this.id;
 				var fileId = 'redactorUploadFile' + this.id;
-				this.form = $('<form  action="' + this.uploadOptions.url + '" method="POST" target="' + name + '" name="' + formId + '" id="' + formId + '" enctype="multipart/form-data"></form>');
+				this.form = $('<form  action="' + this.uploadOptions.url + '" method="POST" target="' + name + '" name="' + formId + '" id="' + formId + '" enctype="multipart/form-data"><div style="margin:0;padding:0;display:inline">' +
+				    '<input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="'+$('meta[name="csrf-token"]').attr('content')+'"></div></form>');
 				
 				var oldElement = this.uploadOptions.input;
 				var newElement = $(oldElement).clone();

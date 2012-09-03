@@ -19,12 +19,14 @@ spec/dummy/tmp/*
 spec/dummy/.jhw-cache/*
 spec/dummy/db/*.sqlite3
 spec/dummy/db/schema.rb
+spec/dummy/db/migrate/*
 pkg/*
 spec/dummy/db/development.sqlite3
 spec/dummy/db/test.sqlite3
 .yardoc
 config/accounts.yml
 spec/dummy/public/system/*
+spec/dummy/config/accounts.yml
 
 # RVM ignores
 .rvmrc

@@ -1,6 +1,7 @@
 class Boss::ResourcesController < Boss::ApplicationController
   load_and_authorize_resource :class => "Boss::Resource"
-  
+  respond_to :json
+
   def create
     if params[:type] == 'image'
       @resource = Boss::Resource.create_image params[:file]
@@ -27,8 +28,6 @@ class Boss::ResourcesController < Boss::ApplicationController
       { "thumb" =>image.resource.url, "image" => image.resource.url }
     end
 
-    respond_to do |format|
-      format.json { render json: @images_json.to_json }
-    end
+    respond_with @images_json
   end
 end

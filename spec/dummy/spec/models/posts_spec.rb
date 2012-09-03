@@ -11,6 +11,19 @@ describe Boss::Post do
     end
   end
 
+  context "category" do
+    it "should have the default category" do
+      a_post.category_id.should_not be_nil
+      a_post.category.name.should == "Default"
+    end
+
+    it "should allow the change of category" do
+      a_post.category_id = 2
+      a_post.category_id.should eq 2
+      a_post.should be_valid
+    end
+  end
+
   context 'posts for index' do
     it "should only return the first posts to show in the index page" do
       Boss::Post.posts_for_index.size.should be <= POSTS["index_limit"].to_i

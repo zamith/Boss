@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814170416) do
+ActiveRecord::Schema.define(:version => 20120903135116) do
 
   create_table "boss_banners", :force => true do |t|
     t.integer "boss_resource_id"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(:version => 20120814170416) do
     t.string  "title"
   end
 
+  create_table "boss_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "boss_posts", :force => true do |t|
     t.string   "title",                            :null => false
     t.text     "body",                             :null => false
@@ -28,7 +34,10 @@ ActiveRecord::Schema.define(:version => 20120814170416) do
     t.boolean  "draft",          :default => true
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.integer  "category_id",    :default => 1
   end
+
+  add_index "boss_posts", ["category_id"], :name => "index_boss_posts_on_category_id"
 
   create_table "boss_resources", :force => true do |t|
     t.string   "resource_file_name"

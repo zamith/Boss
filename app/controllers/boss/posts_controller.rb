@@ -3,11 +3,13 @@ class Boss::PostsController < Boss::ApplicationController
 
   def new
     @post = Boss::Post.new
+    @categories = Boss::Category.all
     session.delete :post_id
   end
   
   def edit
     @post = Boss::Post.find params[:id]
+    @categories = Boss::Category.all
     session[:post_id] = params[:id]
   end
 

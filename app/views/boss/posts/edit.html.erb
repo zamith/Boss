@@ -11,6 +11,8 @@
 
 <%= text_field_tag "post-title", @post.title %>
 
+<%= select_tag "categories", options_from_collection_for_select(@categories, :id, :name) %>
+
 <div style="width: 700px;">
   <textarea id="redactor-content" class="edit" name="content" style="height: 700px;"></textarea>
 </div>

@@ -15,7 +15,9 @@ Boss::Engine.routes.draw do
       end
     end
 
-    namespace :resources, :module => nil, :as => nil do
+    resources :banners, :only => [:index]
+
+    namespace :resources, module: nil, as: nil do
       match '/images' => "resources#all_images",
         :as => "all_images",
         :via => :get
