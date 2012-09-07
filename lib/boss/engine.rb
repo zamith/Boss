@@ -1,5 +1,6 @@
 require "paperclip"
 require "cancan"
+require "acts-as-taggable-on"
 
 module Boss
   class Engine < ::Rails::Engine

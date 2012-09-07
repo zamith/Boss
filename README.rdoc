@@ -5,7 +5,7 @@ Boss is a rails engine that sits on top of Citygate[https://github.com/zamith/ci
 Copyright (C) 2012 Group Buddies
 
 This file is part of Boss. Boss is under the MS-RSL.
-Check the COPYING file for more information on this license, or check online at http://referencesource.microsoft.com/referencesourcelicense.aspx
+Check the COPYING file for more information on this license, or check it online at http://referencesource.microsoft.com/referencesourcelicense.aspx
 
 == Instalation
 
