@@ -12,14 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ./redactor/redactor
-//= require ./jQueryFileUpload/jquery.ui.widget.js
-//= require ./jQueryFileUpload/tmpl.min.js
-//= require ./jQueryFileUpload/load-image.min.js
-//= require ./jQueryFileUpload/jquery.fileupload.js
+//= require redactor/redactor
+//= require jQueryFileUpload/jquery.ui.widget.js
+//= require jQueryFileUpload/tmpl.min.js
+//= require jQueryFileUpload/load-image.min.js
+//= require jQueryFileUpload/jquery.fileupload.js
 //= require_tree ./jQueryFileUpload
-//= require ./slides/slides.min.jquery
-//= require ./yepnope.1.5.4-min.js
-//= require ./jquery-ui-1.8.23.custom.min
-//= require ./boss/utils
-//= require_tree ./boss
+//= require slides/slides.min.jquery
+//= require jquery-ui-1.8.23.custom.min
+//= require boss/utils
+//= require boss/banners
+//= require boss/better-pagination
+//= require boss/resources
+//= require boss/posts
