@@ -20,9 +20,9 @@ class Boss::PostsController < Boss::ApplicationController
   def save
     if session[:post_id]
       @post = Boss::Post.find session[:post_id]
-      saved = @post.update_attributes body: params[:data], title: params[:title]
+      saved = @post.update_attributes body: params[:data], category_id: params[:category_id], title: params[:title]
     else
-      @post = Boss::Post.create body: params[:data], title: params[:title], draft: true
+      @post = Boss::Post.create body: params[:data], title: params[:title], category_id: params[:category_id], draft: true
       saved = (@post.id) ? true : false
       session[:post_id] = @post.id if saved
     end
@@ -43,14 +43,13 @@ class Boss::PostsController < Boss::ApplicationController
     else
       if session[:post_id]
         @post = Boss::Post.find session[:post_id]
-        saved = @post.update_attributes body: params[:data], title: params[:title], draft: false
+        saved = @post.update_attributes body: params[:data], title: params[:title], category_id: params[:category_id], draft: false
         session.delete :post_id
       else
-        @post = Boss::Post.create body: params[:data], title: params[:title], draft: false
+        @post = Boss::Post.create body: params[:data], title: params[:title], category_id: params[:category_id], draft: false
         saved = (@post.id) ? true : false
       end
     end
-
 
     if saved
       flash[:notice] = t('posts.flash.published_post', title: @post.title)
@@ -58,7 +57,7 @@ class Boss::PostsController < Boss::ApplicationController
       flash[:error] = t('posts.flash.failed_to_published_post')
     end
 
-    redirect_to (params[:id]) ? admin_posts_path : posts_path
+    redirect_to (params[:id]) ? boss.admin_posts_path : boss.posts_path
   end
   
   def content

@@ -35,10 +35,12 @@ $.fn.extend
         return true
 
     load_more = ->
+      log "Got to the load more"
       # When loading remove the check scroll event to serialize loading
       $(window).off("scroll") if settings.load_on_scroll
     
       $.get "/#{settings.load_path}?starts_at=#{settings.starts_at}", (data) ->
+        log data
         $loading_elem.hide()
         check_show_or_not()
         if data.has_more
@@ -65,9 +67,11 @@ $.fn.extend
       log "Binding the show more link"
       $show_more_elem.on "click.better_pagination", (event) ->
         event.preventDefault()
+        debugger
         log "Clicked the show more link"
-        load_more()
-        check_show_or_not()
+        return false
+        #load_more()
+        #check_show_or_not()
 
     # The master function
     return @each () ->

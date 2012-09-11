@@ -10,12 +10,12 @@ $ ->
     publish: ->
       $("#publish").on 'click', ->
         $(this).find("#data").attr('value', redactor.$container.getCode())
-        $(this).find("#title").attr('value', $("#post-title").attr("value"))
 
     save: ->
       $('#save').on 'click', (event) ->
-        $.post "/posts/save", { data: redactor.$container.getCode(), title: $("#post-title").attr("value") }, (data) ->
-          window.location.href = data.redirect if data.redirect
+        $.post "/posts/save", { data: redactor.$container.getCode(), title: $("#post-title").attr("value"), category: $("#category").attr("value") }, 
+          (data) ->
+            window.location.href = data.redirect if data.redirect
         event.preventDefault()
 
     init: ->
@@ -35,8 +35,8 @@ $ ->
       redactor.publish()
 
   $("#posts").better_pagination
-    starts_at: <%= POSTS["index_limit"] %>
-    load_on_scroll: true
+    starts_at: <%= POSTS["index_limit"] %>,
+    debug: true
 
   # Initializations
   redactor.init()

@@ -3,3 +3,6 @@ en:
     new:
       publish: "Publish"
       save: "Save Draft"
+      labels:
+        title: "Title"
+        category: "Category"
