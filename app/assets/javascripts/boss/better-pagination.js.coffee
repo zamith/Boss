@@ -69,9 +69,8 @@ $.fn.extend
         event.preventDefault()
         debugger
         log "Clicked the show more link"
-        return false
-        #load_more()
-        #check_show_or_not()
+        load_more()
+        check_show_or_not()
 
     # The master function
     return @each () ->
