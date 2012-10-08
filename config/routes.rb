@@ -1,7 +1,7 @@
 Boss::Engine.routes.draw do
   mount Citygate::Engine => "/"
 
-  resources :posts do
+  resources :posts, :path => "blog" do
     collection do
       post 'save', :constraints => { :format => 'json' }, :defaults => { :format => 'json' }
       post 'publish'
@@ -28,7 +28,7 @@ Boss::Engine.routes.draw do
     end
   
     namespace :admin do
-      resources :posts, :only => [:index]
+      resources :posts, :only => [:index], :path => "blog"
       resources :resources do
         collection do
           get 'load'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907014721) do
+ActiveRecord::Schema.define(:version => 20121008164320) do
 
   create_table "boss_banners", :force => true do |t|
     t.integer "boss_resource_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120907014721) do
     t.string  "subject_class", :null => false
     t.string  "subject_id"
     t.integer "role_id"
+    t.string  "conditions"
   end
 
   add_index "citygate_permissions", ["role_id"], :name => "index_citygate_permissions_on_role_id"
