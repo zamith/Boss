@@ -55,6 +55,9 @@ It defines the multiple sizes resources may take.
 
 *CAUTION* This file should be configured before the app goes into production, because to change it you will have to delete all your resources data.
 
+== Assets
+
+Boss requires the use of jQuery UI, but it leaves it up to you to choose the custom flavor you want and to require it.
 ---
 
 *Note:* Do not forget to check the routes made available to you by Boss with <tt>rake routes</tt>

@@ -19,7 +19,6 @@
 //= require jQueryFileUpload/jquery.fileupload.js
 //= require_tree ./jQueryFileUpload
 //= require slides/slides.min.jquery
-//= require jquery-ui-1.8.23.custom.min
 //= require boss/utils
 //= require boss/banners
 //= require boss/better-pagination
