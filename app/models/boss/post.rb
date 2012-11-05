@@ -12,7 +12,7 @@ module Boss
     protected
       def ensure_title_has_a_value
         if title.nil?
-          self.title = I18n::t('posts.default_title')
+          self.title = I18n::t('banners.default_title')
         end
       end
 
