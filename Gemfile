@@ -8,7 +8,7 @@ gemspec
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
 gem "coffee-rails"
-gem "citygate", :path => "../citygate"
+gem "citygate", :git => "git://github.com/zamith/citygate.git"
 gem "devise", :git => "git://github.com/plataformatec/devise.git"
 
 # Declare any dependencies that are still in development here instead of in
