@@ -24,7 +24,7 @@ Boss::Engine.routes.draw do
     match '/:type' => "resources#create",
       :as => "create_image",
       :via => :post,
-    :constraints => { :type => /(image|file)/}
+      :constraints => { :type => /(image|file)/}
     end
   
     namespace :admin do
