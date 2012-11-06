@@ -9,7 +9,6 @@ describe Boss::Admin::BannersController do
   fixtures :citygate_users
 
   context "create" do
-    # TODO: check for size increnment by 1 when save
 
     it "should call save method" do
       sign_in_user
@@ -29,9 +28,7 @@ describe Boss::Admin::BannersController do
     end
   end
 
-
 end
-
 
 def sign_in_user
   @user = citygate_users(:admin)
