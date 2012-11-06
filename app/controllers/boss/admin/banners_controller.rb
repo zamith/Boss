@@ -10,7 +10,7 @@ class Boss::Admin::BannersController < Boss::Admin::ApplicationController
     @banner = Boss::Banner.new(params[:banner])
     if @banner.save
       flash[:notice] = t('banners.flash.saved')
-      redirect_to admin_root_path
+      redirect_to main_app.admin_root_path
     else
       flash[:alert] = t('banners.flash.failed_to_save')
       render :new
