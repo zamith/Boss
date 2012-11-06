@@ -1,14 +1,14 @@
 module Boss
   class Banner < ActiveRecord::Base
 
-    attr_accessible :boss_resource_id, :finish_date, :link, :start_date, :title
+    attr_accessible :boss_resource_id, :finish_date, :link, :start_date, :title, :image_attributes
 
     belongs_to :image, :class_name => "Boss::Resource", :foreign_key => :boss_resource_id
     before_validation :ensure_title_has_a_value
-    #validates_presence_of :start_date, :image
+    validates_presence_of :start_date, :image
     validate :finish_date_after_end_date
     accepts_nested_attributes_for :image
-    #validates_associated :image
+    validates_associated :image
 
     private
 

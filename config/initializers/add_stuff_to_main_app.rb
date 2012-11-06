@@ -18,8 +18,8 @@ module BossHelpers
   end
 end
 
-::ApplicationController.send :include, BossHelpers
-::ApplicationController.send :extend, BossHelpers::ClassMethods
+#::ApplicationController.send :include, BossHelpers
+#::ApplicationController.send :extend, BossHelpers::ClassMethods
 
 module ApplicationConfig
   extend ActiveSupport::Concern

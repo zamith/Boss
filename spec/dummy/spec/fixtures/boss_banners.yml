@@ -2,6 +2,7 @@ first:
   boss_resource_id: 1
   title: "Fist Banner"
   link: "http://groupbuddies.com"
+  start_date: "2012-11-1"
 second:
   boss_resource_id: 2
   title: ""
