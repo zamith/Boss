@@ -3,7 +3,7 @@ Boss::Engine.routes.draw do
 
   resources :posts, :path => "blog" do
     collection do
-      post 'save', :constraints => { :format => 'json' }, :defaults => { :format => 'json' }
+      post 'save', :constraints => {:format => 'json'}, :defaults => {:format => 'json'}
       post 'publish'
       get  'load'
     end
@@ -14,7 +14,15 @@ Boss::Engine.routes.draw do
     end
   end
 
-  resources :banners, :only => [:index]
+  namespace :admin do
+    resources :banners
+    resources :posts, :path => "blog"
+    resources :resources do
+      collection do
+        get 'load'
+      end
+    end
+  end
 
   namespace :resources, module: nil, as: nil do
     match '/images' => "resources#all_images",
@@ -24,16 +32,7 @@ Boss::Engine.routes.draw do
     match '/:type' => "resources#create",
       :as => "create_image",
       :via => :post,
-      :constraints => { :type => /(image|file)/}
-    end
-  
-    namespace :admin do
-      resources :posts, :only => [:index], :path => "blog"
-      resources :resources do
-        collection do
-          get 'load'
-        end
-      end
-      resources :banners
-    end
+      :constraints => {:type => /(image|file)/}
+  end
+
 end
