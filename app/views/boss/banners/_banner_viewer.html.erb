@@ -1,9 +1,11 @@
 <div id="banners">
   <div class="banners-container">
     <% banners.each do |banner| %>
-      <%= "<a href='#{banner.link}'>".html_safe if banner.link %>
-      <img src="<%= banner.image.resource.url %>" alt="" >
-      <%= "</a>".html_safe if banner.link %>
+      <% if banner.link %>
+        <%= link_to((image_tag banner.image.resource.url, :class => :banner),banner.link.html_safe)  %>
+      <% else %>
+        <%= image_tag banner.image.resource.url, :class => :banner %>
+      <% end %>
     <% end %>
   </div>
 

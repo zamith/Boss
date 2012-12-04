@@ -1,0 +1,5 @@
+en:
+  banners:
+    flash:
+      saved: "Banner created."
+      failed_to_save: "Something went wrong."

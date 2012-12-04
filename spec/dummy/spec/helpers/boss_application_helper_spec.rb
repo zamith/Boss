@@ -4,7 +4,7 @@ describe Boss::ApplicationHelper do
   set_fixture_class :boss_banners => 'Boss::Banner'
   fixtures :boss_banners
 
-  let(:banner) { boss_banners(:gb) }
+  let(:banner) { boss_banners(:first) }
 
   context "ac_helper" do
     it "should cache the ac_helper" do
