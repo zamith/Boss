@@ -5,7 +5,7 @@ require "boss/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "boss"
+  s.name        = "boss-cms"
   s.version     = Boss::VERSION
   s.authors     = ["Group Buddies"]
   s.email       = ["zamith@groupbuddies.com"]
