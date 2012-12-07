@@ -13,7 +13,7 @@ $ ->
 
     save: ->
       $('#save').on 'click', (event) ->
-        $.post "/admin/posts/save", { data: redactor.$container.getCode(), title: $("#post-title").attr("value"), category: $("#category").attr("value") },
+        $.post "/admin/blog/save", { data: redactor.$container.getCode(), title: $("#post-title").attr("value"), category: $("#category").attr("value") },
           (data) ->
             window.location.href = data.redirect if data.redirect
         event.preventDefault()
@@ -27,7 +27,7 @@ $ ->
         imageGetJson: '/resources/images.json',    # gallery to choose from
         fileUpload: '/resources/file',             # upload files from pc
         observeImages: true,                       # change image settings
-        autosave: '/admin/posts/save',                   # autosave
+        autosave: '/admin/blog/save',              # autosave
         interval: 60                               # autosave interval in seconds
       })
       redactor.edit()
