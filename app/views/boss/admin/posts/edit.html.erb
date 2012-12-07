@@ -3,7 +3,7 @@
 <% end %>
 
 <button id="save"><%= t('posts.new.save') %></button>
-<%= form_tag publish_posts_path, id: "publish" do %>
+<%= form_tag boss.publish_posts_path, id: "publish" do %>
   <%= hidden_field_tag :data, "" %>
   <%= hidden_field_tag :title, "" %>
   <%= submit_tag t('posts.new.publish')  %>
