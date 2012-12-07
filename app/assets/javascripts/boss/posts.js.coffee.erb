@@ -13,14 +13,14 @@ $ ->
 
     save: ->
       $('#save').on 'click', (event) ->
-        $.post "/admin/blog/save", { data: redactor.$container.getCode(), title: $("#post-title").attr("value"), category: $("#category").attr("value") },
+        $.post "/admin/blog/save", { data: redactor.$container.getCode(), title: $("#post-title").attr("value"), category_id: $("#category_id").attr("value") },
           (data) ->
             window.location.href = data.redirect if data.redirect
         event.preventDefault()
 
     init: ->
       redactor.$container.redactor({
-        #fixed: true,                               # toolbar goes to top as user scrolls
+        #fixed: true,                              # toolbar goes to top as user scrolls
         autoresize: true,                          # textarea resizes automatically as user types
         focus: true,                               # gets focus on load
         imageUpload: '/resources/image',           # upload images from pc
