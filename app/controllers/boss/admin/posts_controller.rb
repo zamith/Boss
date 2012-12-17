@@ -23,7 +23,7 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
       saved = @post.update_attributes body: params[:data], category_id: params[:category_id], title: params[:title]
     else
       @post = Boss::Post.create body: params[:data], title: params[:title], category_id: params[:category_id], draft: true
-      saved = (@post.id) ? true : false
+      saved = @post.persisted?
       session[:post_id] = @post.id if saved
     end
 
@@ -38,16 +38,12 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
 
   def publish
     if params[:id]
-      @post = Boss::Post.find params[:id]
-      saved = @post.update_attributes draft: false
+      saved = publish_from_index params[:id]
     else
       if session[:post_id]
-        @post = Boss::Post.find session[:post_id]
-        saved = @post.update_attributes body: params[:data], title: params[:title], category_id: params[:category_id], draft: false
-        session.delete :post_id
+        saved = publish_saved_post params
       else
-        @post = Boss::Post.create body: params[:data], title: params[:title], category_id: params[:category_id], draft: false
-        saved = (@post.id) ? true : false
+        saved = publish_unsaved_post params
       end
     end
 
@@ -79,10 +75,35 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
     end
   end
 
-  protected
+  private
 
   def check_if_admin
     authorize! :manage, Boss::Post
+  end
+
+  def publish_from_index(post_id)
+    @post = Boss::Post.find params[:id]
+    @post.update_attributes draft: false,
+      published_date: Time.now
+  end
+
+  def publish_saved_post(params)
+    @post = Boss::Post.find session[:post_id]
+    session.delete :post_id
+    @post.update_attributes body: params[:data],
+      title: params[:title],
+      category_id: params[:category_id],
+      draft: false,
+      published_date: Time.now
+  end
+
+  def publish_unsaved_post(params)
+    @post = Boss::Post.create body: params[:data],
+      title: params[:title],
+      draft: false,
+      category_id: params[:category_id],
+      published_date: Time.now
+    @post.persisted?
   end
 
 end
