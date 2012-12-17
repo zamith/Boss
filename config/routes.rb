@@ -14,6 +14,7 @@ Boss::Engine.routes.draw do
     end
   end
 
+
   namespace :admin do
     resources :banners
     resources :posts, :path => "blog"
@@ -32,7 +33,30 @@ Boss::Engine.routes.draw do
     match '/:type' => "resources#create",
       :as => "create_image",
       :via => :post,
-      :constraints => {:type => /(image|file)/}
+
+    :constraints => { :type => /(image|file)/}
+  end
+
+  namespace :admin do
+    resources :posts, :path => "blog" do
+      collection do
+        post 'save', :constraints => { :format => 'json' }, :defaults => { :format => 'json' }
+        post 'publish'
+        get  'load'
+      end
+
+      member do
+        post 'publish'
+        get 'content'
+      end
+    end
+
+    resources :resources do
+      collection do
+        get 'load'
+      end
+    end
+    resources :banners
   end
 
 end

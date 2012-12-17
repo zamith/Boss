@@ -10,14 +10,14 @@ module Boss
       class_name = Pagination.get_class_name(base.name)
       base.send :define_singleton_method, "#{class_name}_for_index", lambda { |options={}|
         options.keys.map(&:to_sym)
-        options = { index_limit: Object.const_get(class_name.upcase.to_sym)["index_limit"]}.merge options
+        options = { index_limit: Object.const_get(class_name.upcase.to_sym)["index_limit"], conditions: {} }.merge options
 
         if options[:starts_at] && options[:starts_at] != 0
-          base.limit(options[:index_limit]).offset(options[:starts_at])
+          base.limit(options[:index_limit]).offset(options[:starts_at]).where(options[:conditions])
         elsif options[:starts_at] && options[:starts_at] == 0
           []
         else
-          base.limit(options[:index_limit])
+          base.limit(options[:index_limit]).where(options[:conditions])
         end
       }
     end

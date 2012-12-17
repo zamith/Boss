@@ -7,6 +7,7 @@ class Ability
     @user = user || Citygate::User.new # guest user (not logged in)
 
     can :index, :home
+    can :read, Boss::Post
 
     if @user.role
       send(@user.role.name.downcase)

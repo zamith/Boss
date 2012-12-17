@@ -2,7 +2,8 @@
   <span id="post-title"><%= post.title %></span>
   <span class="post-status"><%= (post.draft) ? t("posts.member.status.draft") : t("posts.member.status.publish") %></span>
   <div class="buttons">
-    <%= link_to t("posts.member.publish_link"), boss.publish_post_path(post), method: :post if post.draft %>
-    <%= link_to t("posts.member.edit_link"), boss.edit_post_path(post) %>
+    <%= link_to t("posts.member.publish_link"), boss.publish_admin_post_path(post), method: :post if post.draft %>
+    <%= link_to t("posts.member.edit_link"), boss.edit_admin_post_path(post) %>
+    <%= link_to t("posts.member.delete_link"), boss.admin_post_path(post), method: :delete, confirm: t('posts.member.confirm_delete') %>
   </div>
 </li>

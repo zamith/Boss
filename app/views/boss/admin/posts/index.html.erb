@@ -1,3 +1,5 @@
+<%= link_to t('admin.posts.index.new_post'), boss.new_admin_post_path %>
+
 <ul id="posts">
   <%= render :partial => "post", :collection => @posts %>
 </ul>

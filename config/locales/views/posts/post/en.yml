@@ -6,4 +6,5 @@ en:
         publish: "Published"
       publish_link: "Publish"
       edit_link: "Edit"
-          
+      delete_link: "Delete"
+      confirm_delete: "Are you sure?"
