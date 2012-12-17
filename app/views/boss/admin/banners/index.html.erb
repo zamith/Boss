@@ -1,0 +1,26 @@
+
+<% if !@banners.blank? %>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  <% for banner in @banners %>
+    <tr>
+      <td><%= banner.id %></td>
+      <td><%= banner.title %></td>
+      <td><%= banner.image %></td>
+      <td>
+        <%= link_to "Show", admin_banner_path(banner) %>
+        <%= link_to "Edit", edit_admin_banner_path(banner) %>
+        <%= link_to "Destroy", admin_banner_path(banner), :method => :delete, :confirm => "Are you sure?" %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p>There is no banners.</p>
+<% end %>
+<p><%= link_to "Create a banner", new_admin_banner_path %></p>
