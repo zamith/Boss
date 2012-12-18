@@ -26,7 +26,7 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
       flash[:error] = t('posts.flash.failed_to_destroy')
     end
 
-    redirect_to boss.admin_posts_index_path
+    redirect_to boss.admin_posts_path
   end
 
   def save
