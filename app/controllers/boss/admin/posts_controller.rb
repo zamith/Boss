@@ -17,6 +17,17 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
     session[:post_id] = params[:id]
   end
 
+  def destroy
+    @post = Boss::Post.find params[:id]
+    if @post.destroy
+      flash[:notice] = t('posts.flash.destroyed')
+    else
+      flash[:error] = t('posts.flash.failed_to_destroy')
+    end
+
+    render :index
+  end
+
   def save
     if session[:post_id]
       @post = Boss::Post.find session[:post_id]
