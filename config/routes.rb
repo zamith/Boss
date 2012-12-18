@@ -1,9 +1,29 @@
 Boss::Engine.routes.draw do
   mount Citygate::Engine => "/"
 
-  resources :posts, :only => [:index, :show], :path => "blog"
+  resources :posts, :path => "blog" do
+    collection do
+      post 'save', :constraints => {:format => 'json'}, :defaults => {:format => 'json'}
+      post 'publish'
+      get  'load'
+    end
 
-  resources :banners, :only => [:index]
+    member do
+      post 'publish'
+      get 'content'
+    end
+  end
+
+
+  namespace :admin do
+    resources :banners
+    resources :posts, :path => "blog"
+    resources :resources do
+      collection do
+        get 'load'
+      end
+    end
+  end
 
   namespace :resources, module: nil, as: nil do
     match '/images' => "resources#all_images",
@@ -13,6 +33,7 @@ Boss::Engine.routes.draw do
     match '/:type' => "resources#create",
       :as => "create_image",
       :via => :post,
+
     :constraints => { :type => /(image|file)/}
   end
 
@@ -37,4 +58,5 @@ Boss::Engine.routes.draw do
     end
     resources :banners
   end
+
 end

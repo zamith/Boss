@@ -5,9 +5,9 @@ module Boss
     end
 
     def banner_viewer
-      # ::ApplicationController.ac_helper.render_to_string(partial: "boss/banners/banner_viewer",
-      #                                                    locals: {banners: Boss::Banner.all}).html_safe
-      render partial: "boss/banners/banner_viewer", locals: {banners: Boss::Banner.all}
+      ActionController::Base.new.render_to_string(partial: "boss/banners/banner_viewer",
+                                                         locals: {banners: Boss::Banner.all}).html_safe
+      #render partial: "boss/banners/banner_viewer", locals: {banners: Boss::Banner.all}
     end
 
     def include_i18n_calendar_javascript

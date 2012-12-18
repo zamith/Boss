@@ -1,0 +1,38 @@
+<%= include_i18n_calendar_javascript %>
+
+<%= form_for @banner, 
+             url: admin_banner_path(@banner),
+             method: :put do |form| %>
+
+  <div class="form-field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :link %>
+    <%= form.text_field :link %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :start_date %>
+    <%= form.text_field :start_date, :class => "datepicker" %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :finish_date %>
+    <%= form.text_field :finish_date, :class => "datepicker" %>
+  </div>
+
+  <%= form.fields_for :image do |resource_form| %>
+    <div class="form-field">
+      <%= resource_form.label :resource, t('helpers.label.banner.image.resource') %>
+      <%= resource_form.file_field :resource %>
+    </div>
+  <% end %>
+
+  <div class="form-field">
+    <%= form.submit %>
+  </div>
+
+<% end %>

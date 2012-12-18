@@ -13,7 +13,7 @@ module Boss
     private
 
     def ensure_title_has_a_value
-      if title.nil?
+      if title.blank?
         self.title = I18n::t('banners.default_title')
       end
     end
