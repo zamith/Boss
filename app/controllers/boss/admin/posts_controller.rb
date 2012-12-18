@@ -19,13 +19,14 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
 
   def destroy
     @post = Boss::Post.find params[:id]
+    title = @post.title
     if @post.destroy
-      flash[:notice] = t('posts.flash.destroyed')
+      flash[:notice] = t('posts.flash.destroyed', name: title)
     else
       flash[:error] = t('posts.flash.failed_to_destroy')
     end
 
-    render :index
+    redirect_to admin_blog_index
   end
 
   def save

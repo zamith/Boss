@@ -3,3 +3,5 @@ en:
     flash:
       saved_draft: "Saved Draft"
       failed_to_save: "Failed to save the draft"
+      destroyed: "Deleted %{name}"
+      failed_to_destroy: ""
