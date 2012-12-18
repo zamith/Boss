@@ -38,7 +38,7 @@ Boss::Engine.routes.draw do
   end
 
   namespace :admin do
-    resources :posts, :as => "blog", :path => "blog" do
+    resources :posts, :as => "posts", :path => "blog" do
       collection do
         post 'save', :constraints => { :format => 'json' }, :defaults => { :format => 'json' }
         post 'publish'
