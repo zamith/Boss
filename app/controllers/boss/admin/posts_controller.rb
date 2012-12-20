@@ -30,11 +30,16 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
   end
 
   def save
+    p "here"
     if session[:post_id]
+      p "there"
       @post = Boss::Post.find session[:post_id]
+      add_tags
       saved = @post.update_attributes body: params[:data], category_id: params[:category_id], title: params[:title]
     else
-      @post = Boss::Post.create body: params[:data], title: params[:title], category_id: params[:category_id], draft: true
+      @post = Boss::Post.new body: params[:data], title: params[:title], category_id: params[:category_id], draft: true
+      add_tags
+      @post.save
       saved = @post.persisted?
       session[:post_id] = @post.id if saved
     end
@@ -50,7 +55,7 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
 
   def publish
     if params[:id]
-      saved = publish_from_index params[:id]
+      saved = publish_from_index_or_edit params[:id]
     else
       if session[:post_id]
         saved = publish_saved_post params
@@ -93,8 +98,9 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
     authorize! :manage, Boss::Post
   end
 
-  def publish_from_index(post_id)
+  def publish_from_index_or_edit
     @post = Boss::Post.find params[:id]
+    add_tags
     @post.update_attributes draft: false,
       published_date: Time.now
   end
@@ -102,6 +108,7 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
   def publish_saved_post(params)
     @post = Boss::Post.find session[:post_id]
     session.delete :post_id
+    add_tags
     @post.update_attributes body: params[:data],
       title: params[:title],
       category_id: params[:category_id],
@@ -110,12 +117,21 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
   end
 
   def publish_unsaved_post(params)
-    @post = Boss::Post.create body: params[:data],
+    @post = Boss::Post.new body: params[:data],
       title: params[:title],
       draft: false,
       category_id: params[:category_id],
       published_date: Time.now
+    add_tags
+    @post.save
+
     @post.persisted?
+  end
+
+  def add_tags
+    unless params[:tags].blank?
+      @post.tag_list = params[:tags]
+    end
   end
 
 end

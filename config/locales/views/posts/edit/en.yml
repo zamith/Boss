@@ -1,0 +1,7 @@
+en:
+  posts:
+    edit:
+      save: "Save"
+      labels:
+        title: "Title"
+        category: "Category"

@@ -9,11 +9,11 @@ $ ->
 
     publish: ->
       $("#publish").on 'click', ->
-        $(this).find("#data").attr('value', redactor.$container.getCode())
+        $("form").find("#data").attr('value', redactor.$container.getCode())
 
     save: ->
       $('#save').on 'click', (event) ->
-        $.post "/admin/blog/save", { data: redactor.$container.getCode(), title: $("#title").attr("value"), category_id: $("#category_id").attr("value") },
+        $.post "/admin/blog/save", { data: redactor.$container.getCode(), title: $("#title").attr("value"), category_id: $("#category_id").attr("value"), tags: $("#tags").attr("value") },
           (data) ->
             window.location.href = data.redirect if data.redirect
         event.preventDefault()

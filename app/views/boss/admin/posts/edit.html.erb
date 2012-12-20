@@ -2,17 +2,28 @@
   <%= stylesheet_link_tag "redactor" %>
 <% end %>
 
-<button id="save"><%= t('posts.new.save') %></button>
-<%= form_tag boss.publish_admin_posts_path, id: "publish" do %>
+<%= form_tag boss.publish_admin_posts_path do %>
   <%= hidden_field_tag :data, "" %>
-  <%= hidden_field_tag :title, "" %>
-  <%= submit_tag t('posts.new.publish')  %>
+  <%= hidden_field_tag :id, @post.id %>
+
+  <div class="field">
+    <%= label_tag "title", t('posts.new.labels.title') %>
+    <%= text_field_tag "title", @post.title %>
+  </div>
+
+  <div class="field">
+    <%= label_tag "category_id", t('posts.new.labels.category') %>
+    <%= select_tag "category_id", options_from_collection_for_select(@categories, :id, :name) %>
+  </div>
+
+    <div class="field">
+    <%= label_tag "tags", t('posts.new.labels.tags') %>
+    <%= text_field_tag "tags", @post.tag_list.join(", ") %>
+  </div>
+
+  <button id="save"><%= t('posts.edit.save') %></button>
 <% end %>
 
-<%= text_field_tag "post-title", @post.title %>
-
-<%= select_tag "categories", options_from_collection_for_select(@categories, :id, :name) %>
-
 <div style="width: 700px;">
-  <textarea id="redactor-content" class="edit" name="content" style="height: 700px;"></textarea>
+  <textarea id="redactor-content" class="new" name="content" style="height: 700px;"><%= @post.body %></textarea>
 </div>

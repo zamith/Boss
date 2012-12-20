@@ -3,7 +3,7 @@ module Boss
     include Boss::Pagination
     acts_as_taggable
 
-    attr_accessible :body, :published_date, :title, :draft, :category_id
+    attr_accessible :body, :published_date, :title, :draft, :category_id, :tags
     validates_presence_of :title, :body
     before_validation :ensure_title_has_a_value
 
