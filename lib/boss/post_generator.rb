@@ -12,8 +12,9 @@ module Boss
       begin
         file = File.open("#{Boss::Engine.root}/app/views/boss/posts/show.html.erb", "wb")
         file.write @html
-      ensure
         file.close
+      rescue
+        puts "Could not generate post template"
       end
     end
 
