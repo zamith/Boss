@@ -1,7 +1,7 @@
-pg = Boss::PostGenerator.new do
-  [ :meta,
-    :meta,
-    :post ]
-end
+#pg = Boss::PostGenerator.new do
+#  [ :meta,
+#    :meta,
+#    :post ]
+#end
 
-pg.generate
+#pg.generate
