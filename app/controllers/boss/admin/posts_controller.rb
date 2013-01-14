@@ -30,9 +30,7 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
   end
 
   def save
-    p "here"
     if session[:post_id]
-      p "there"
       @post = Boss::Post.find session[:post_id]
       add_tags
       saved = @post.update_attributes body: params[:data], category_id: params[:category_id], title: params[:title]
@@ -54,13 +52,13 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
   end
 
   def publish
-    if params[:id]
-      saved = publish_from_index_or_edit params[:id]
+    saved = if params[:id]
+      publish_from_index_or_edit
     else
       if session[:post_id]
-        saved = publish_saved_post params
+        publish_saved_post
       else
-        saved = publish_unsaved_post params
+        publish_unsaved_post
       end
     end
 
@@ -105,7 +103,7 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
       published_date: Time.now
   end
 
-  def publish_saved_post(params)
+  def publish_saved_post
     @post = Boss::Post.find session[:post_id]
     session.delete :post_id
     add_tags
@@ -116,7 +114,7 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
       published_date: Time.now
   end
 
-  def publish_unsaved_post(params)
+  def publish_unsaved_post
     @post = Boss::Post.new body: params[:data],
       title: params[:title],
       draft: false,
