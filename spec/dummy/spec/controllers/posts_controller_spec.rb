@@ -11,7 +11,7 @@ describe Boss::PostsController do
     it "should provide all the required posts to the view" do
       get :index
 
-      assigns(:posts).should == Boss::Post.posts_for_index
+      assigns(:posts).should == Boss::Post.posts_for_index(conditions: { draft: false })
     end
   end
 
