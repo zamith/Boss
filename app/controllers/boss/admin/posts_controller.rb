@@ -1,5 +1,5 @@
 class Boss::Admin::PostsController < Boss::Admin::ApplicationController
-  before_filter :check_if_admin
+  before_filter :check_if_admin, except: [:save]
 
   def index
     @posts = Boss::Post.all
@@ -43,7 +43,7 @@ class Boss::Admin::PostsController < Boss::Admin::ApplicationController
     end
 
     @response = (saved) ?
-      { flash_message: t('posts.flash.saved_draft'), flash: "notice", redirect: posts_path } :
+      { flash_message: t('posts.flash.saved_draft'), flash: "notice", redirect: boss.admin_posts_path } :
       { flash_message: t('posts.flash.failed_to_save'), flash: "error" }
 
     respond_to do |format|

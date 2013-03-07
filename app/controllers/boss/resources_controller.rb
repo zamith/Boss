@@ -1,5 +1,5 @@
 class Boss::ResourcesController < Boss::ApplicationController
-  load_and_authorize_resource :class => "Boss::Resource"
+  #load_and_authorize_resource :class => "Boss::Resource"
   respond_to :json
 
   def create
@@ -21,7 +21,7 @@ class Boss::ResourcesController < Boss::ApplicationController
       render status: 400
     end
   end
-  
+
   def all_images
     @images = Boss::Resource.all_images
     @images_json = @images.map do |image|

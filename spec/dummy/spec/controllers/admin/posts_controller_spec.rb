@@ -104,7 +104,7 @@ describe Boss::Admin::PostsController do
     it "should save the html code of a post" do
       post :save, data: a_post.body, title: a_post.title
 
-      assigns(:response).should == { "flash_message" => "Saved Draft", "flash" => "notice", "redirect" => "/blog"}
+      assigns(:response).should == { "flash_message" => "Saved Draft", "flash" => "notice", "redirect" => "/admin/blog"}
       assigns(:post).body.should == a_post.body
     end
 
