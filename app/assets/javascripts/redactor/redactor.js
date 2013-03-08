@@ -1984,6 +1984,9 @@ var RLANG = {
 				$.ajax({
 					url: this.opts.autosave,
 					type: 'post',
+					beforeSend: function(xhr) {
+					  xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+					},
 					data: this.$el.attr('name') + '=' + escape(encodeURIComponent(this.getCode())),
 					success: $.proxy(function(data)
 					{
@@ -3804,6 +3807,7 @@ var RLANG = {
 				var formId = 'redactorUploadForm' + this.id;
 				var fileId = 'redactorUploadFile' + this.id;
 				this.form = $('<form  action="' + this.uploadOptions.url + '" method="POST" target="' + name + '" name="' + formId + '" id="' + formId + '" enctype="multipart/form-data"></form>');
+				$(this.form).append('<input name="authenticity_token" type="hidden" value="'+$('meta[name="csrf-token"]').attr('content')+'">');
 
 				// append hidden fields
 				if (this.opts.uploadFields !== false && typeof this.opts.uploadFields === 'object')
@@ -4114,6 +4118,9 @@ var RLANG = {
 						url: this.opts.url,
 						dataType: 'html',
 						data: fd,
+						beforeSend: function(xhr) {
+    					xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+  					},
 						xhr: provider,
 						cache: false,
 						contentType: false,

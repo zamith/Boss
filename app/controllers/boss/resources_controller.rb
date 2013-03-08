@@ -1,5 +1,5 @@
 class Boss::ResourcesController < Boss::ApplicationController
-  #load_and_authorize_resource :class => "Boss::Resource"
+  load_and_authorize_resource :class => "Boss::Resource"
   respond_to :json
 
   def create

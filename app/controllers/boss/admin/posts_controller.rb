@@ -1,5 +1,5 @@
 class Boss::Admin::PostsController < Boss::Admin::ApplicationController
-  before_filter :check_if_admin, except: [:save]
+  before_filter :check_if_admin, only: [:new, :edit, :destroy, :publish]
 
   def index
     @posts = Boss::Post.all
