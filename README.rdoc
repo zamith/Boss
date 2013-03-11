@@ -1,4 +1,4 @@
-= Boss {<img src="https://codeclimate.com/github/zamith/Boss.png" />}[https://codeclimate.com/github/zamith/Boss]
+= Boss {<img src="https://travis-ci.org/zamith/Boss.png?branch=master" alt="Build Status" />}[https://travis-ci.org/zamith/Boss] {<img src="https://codeclimate.com/github/zamith/Boss.png" />}[https://codeclimate.com/github/zamith/Boss]
 
 Boss is a rails engine that sits on top of Citygate[https://github.com/zamith/citygate] and adds CMS functionalities (posts, resources, banners and pages)
 
